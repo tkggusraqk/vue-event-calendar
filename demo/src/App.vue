@@ -7,15 +7,6 @@
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
     ></vue-event-calendar>
-    <h2 class="t-center mt150">Custom template</h2>
-    <vue-event-calendar :events="demoEvents">
-      <template scope="props">
-        <div v-for="(event, index) in props.showEvents" class="event-item">
-          <!-- In here do whatever you want, make you owner event template -->
-          {{event}}
-        </div>
-      </template>
-    </vue-event-calendar>
   </div>
 </template>
 
