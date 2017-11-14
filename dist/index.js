@@ -577,6 +577,10 @@ var inBrowser = typeof window !== 'undefined';
         arrowBoth: {
             type: Boolean,
             default: false
+        },
+        showCollapse: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
@@ -730,6 +734,14 @@ var inBrowser = typeof window !== 'undefined';
         isEventSelected: {
             type: Boolean,
             default: false
+        },
+        arrowBoth: {
+            type: Boolean,
+            default: false
+        },
+        showCollapse: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
@@ -1037,6 +1049,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "events": _vm.events,
       "calendar": _vm.calendarOptions,
+      "showCollapse": _vm.showCollapse,
+      "arrowBoth": _vm.arrowBoth,
       "selectedDay": _vm.selectedDayEvents.date
     },
     on: {
@@ -1129,6 +1143,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       })])
     }))
   }))]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.showCollapse),
+      expression: "showCollapse"
+    }],
     staticClass: "cal-footer"
   }, [_c('div', {
     staticClass: "container"

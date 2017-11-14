@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="cal-footer">
+        <div class="cal-footer" v-show="showCollapse">
             <div class="container">
                 <div class="arrow" :class="!isArrowUp?'up':'down'" @click="arrowHandler">
                     <span class="icon"></span>
@@ -80,6 +80,10 @@
             arrowBoth: {
                 type: Boolean,
                 default: false
+            },
+            showCollapse: {
+                type: Boolean,
+                default: true
             }
         },
         computed: {

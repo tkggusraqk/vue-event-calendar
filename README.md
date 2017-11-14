@@ -1,37 +1,31 @@
-# vue-event-calendar
+# vue-event-calendar-ext
 
-> A simple events calendar for Vue2, no dependencies except Vue2. responsive & mobile first.
-> [Live Demo Here](http://geoffzhu.cn/vue-event-calendar/)
+> vue-event-calendar-ext是基于vue-event-calendar定制改造的一个版本。
+> [在线例子](https://tkggusraqk.github.io/vue-event-calendar/)
 
-![](http://o80ronwlu.bkt.clouddn.com/vue-event-calendar.gif)
-
-[![npm version](https://img.shields.io/npm/v/vue-event-calendar.svg)](https://www.npmjs.com/package/vue-event-calendar)
-
-[中文文档](https://github.com/GeoffZhu/vue-event-calendar/blob/master/README.zh.md)
-
-## Requirements
+## 依赖
 - vue: ^2.0.0
 
-## Usage
-#### install
+## 使用方法
+#### 安装
 
 ``` sh
- npm install vue-event-calendar --save
+ npm install vue-event-calendar-ext --save
 ```
 
-#### main.js
+#### 入口 Main.js
 
 ```javascript
-import 'vue-event-calendar/dist/style.css' //^1.1.10, CSS has been extracted as one file, so you can easily update it.
-import vueEventCalendar from 'vue-event-calendar'
-Vue.use(vueEventCalendar, {locale: 'en'}) //locale can be 'zh' , 'en' , 'es', 'pt-br', 'ja', 'ko', 'fr', 'it', 'ru', 'de', 'vi'
+import 'vue-event-calendar-ext/dist/index.css' //1.1.10之后的版本，css被放在了单独的文件中，方便替换
+import vueEventCalendarExt from 'vue-event-calendar-ext'
+Vue.use(vueEventCalendar, {locale: 'zh'}) //可以设置语言，支持中文和英文
 ```
 
-#### file.vue
+#### 用法示例
 
 ```vue
 <template>
-  <vue-event-calendar :events="demoEvents"></vue-event-calendar>
+  <vue-event-calendar :events="demoEvents" @monthChanged="handleMonthChanged" @dayChanged="handleDayChanged"></vue-event-calendar>
 </template>
 
 <script>
@@ -39,21 +33,31 @@ export default {
   data () {
     return {
       demoEvents: [{
-        date: '2016/11/12', // Required
-        title: 'Foo' // Required
+        date: '2016/11/12', // 必填
+        title: 'Foo' // 必填
       }, {
         date: '2016/12/15',
         title: 'Bar',
         desc: 'description',
-        customClass: 'disabled highlight' // Custom classes to an calendar cell
+        customClass: 'disabled highlight' // 自定义日历单元格的Class，会加到对应的日历单元格上
       }]
     }
+  },
+  methods: {
+	   handleDayChanged(data) {
+                //日程事件处理 todo
+                console.log(data)
+            },
+            handleMonthChanged(data) {
+                //月份切换事件 todo
+                console.log(data)
+            }
   }
 }
 </script>
 ```
 
-## Custom date title
+## 自定义日期标题
 
 ```vue
 <template>
@@ -61,46 +65,11 @@ export default {
 </template>
 ```
 
-In most cases, the default date string is enough，but when you want a custom date title, you can give a prop ```title```.
-It is important to noticed that the title will be replaced with a static String you passed in. You need to monitor the dayChanged event and change the title by youself.
+当你使用自定义日历标题的时候，需要注意，标题将被替换成静态的你传入的String，你需要手动监听dayChanged事件去改变title。
 
-## Customization event template
-If you want customization event template. required Vue: ^2.1.0. Because I use new feature(Scoped Slots) of ^2.1.0
-
-```vue
-<template>
-  <vue-event-calendar :events="demoEvents">
-      <template scope="props">
-        <div v-for="(event, index) in props.showEvents" class="event-item">
-          <!-- In here do whatever you want, make you owner event template -->
-          {{event}}
-        </div>
-      </template>
-    </vue-event-calendar>
-</template>
-
-<script>
-export default {
-  data () {
-    return {
-      demoEvents: [{
-        date: '2016/12/15',
-        title: 'eat',
-        desc: 'longlonglong description'
-      },{
-        date: '2016/11/12',
-        title: 'this is a title'
-      }]
-    }
-  }
-}
-</script>
+## 组件事件
+可以监听的事件有两个，选择了哪天和当月是哪月，当发生改变时，会触发监听函数。函数中的回调参数为改变后的日期。
 ```
-
-## Component Events
-Can handle two Events, @day-changed and @month-changed, callback params like ``` {date: '2017/06/23', events: []} ```.
-
-```javascript
 <template>
   <vue-event-calendar
     :events="demoEvents"
@@ -113,9 +82,9 @@ Can handle two Events, @day-changed and @month-changed, callback params like ```
 ## Options
 
 ```
-  // When Vue.use, options
+  // 用 Vue.use时, 可以设置的参数
   {
-    locale: 'en',
+    locale: 'zh',
     color: 'black', //Set main color
     className: 'Custom className for current clicked date', // (default: 'selected-day')
     weekStartOn: 'week Start on which day'  // Can be: 1, 2, 3, 4, 5, 6, 0 (default: 0)
@@ -124,20 +93,20 @@ Can handle two Events, @day-changed and @month-changed, callback params like ```
 
 ## API
 ```javascript
-// NextMonth
+// 下个月
 this.$EventCalendar.nextMonth()
 ```
 ```javascript
-// PreMonth
+// 上个月
 this.$EventCalendar.preMonth()
 ```
 ```javascript
-//ToDate
+//到指定日期
 this.$EventCalendar.toDate('2016/11/12')
 ```
-More in [Demo Folder](https://github.com/GeoffZhu/vue-event-calendar/tree/master/demo)
 
-## Develop
+## 开发
+可以在github直接clone我的项目然后执行如下命令继续二次开发或发版，欢迎star&&issue
 ```
 npm run dev  //develop
 npm run build //production
@@ -145,11 +114,10 @@ npm run build //production
 
 ## Change log
 
-##### 1.3.6 -> 1.4.0
+##### 1.0.0
+- 修复选中日期切换月份仍显示选中状态
+- 增加非日程日期可以选中
+- 去除日程面板
 
-- Remove today background, use a small dot below the date
-- Increase the selected date style
-
-##### 1.4.0 -> 1.4.8
-
-- Add week start on
+#Links
+[vue-event-calendar](https://github.com/GeoffZhu/vue-event-calendar)

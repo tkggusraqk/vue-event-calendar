@@ -1,6 +1,6 @@
 <template>
     <div class="__vev_calendar-wrapper">
-        <cal-panel :events="events" :calendar="calendarOptions" :selectedDay='selectedDayEvents.date'
+        <cal-panel :events="events" :calendar="calendarOptions" :showCollapse="showCollapse" :arrowBoth="arrowBoth" :selectedDay='selectedDayEvents.date'
                    @cur-day-changed="handleChangeCurDay" @month-changed="handleMonthChanged">
         </cal-panel>
     </div>
@@ -46,6 +46,14 @@
             isEventSelected: {
                 type: Boolean,
                 default: false
+            },
+            arrowBoth: {
+                type: Boolean,
+                default: false
+            },
+            showCollapse: {
+                type: Boolean,
+                default: true
             }
         },
         computed: {

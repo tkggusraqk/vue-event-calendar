@@ -1,9 +1,32 @@
 <template>
     <div id="app">
-        <h1>vue-event-calendar</h1>
-        <h2 class="t-center">Default template</h2>
+        <h1>vue-event-calendar-ext</h1>
         <vue-event-calendar
                 :events="demoEvents"
+                @day-changed="handleDayChanged"
+                @month-changed="handleMonthChanged"
+        ></vue-event-calendar>
+        <h2 class="t-center">禁用折叠面板</h2>
+        <vue-event-calendar
+                :events="demoEvents"
+                :showCollapse="false"
+                @day-changed="handleDayChanged"
+                @month-changed="handleMonthChanged"
+        ></vue-event-calendar>
+        <h2 class="t-center">导航两边对齐</h2>
+        <vue-event-calendar
+                :events="demoEvents"
+                :showCollapse="false"
+                :arrowBoth="true"
+                @day-changed="handleDayChanged"
+                @month-changed="handleMonthChanged"
+        ></vue-event-calendar>
+        <h2 class="t-center">非日程不能选中</h2>
+        <vue-event-calendar
+                :events="demoEvents"
+                :showCollapse="false"
+                :arrowBoth="true"
+                :isEventSelected="true"
                 @day-changed="handleDayChanged"
                 @month-changed="handleMonthChanged"
         ></vue-event-calendar>
