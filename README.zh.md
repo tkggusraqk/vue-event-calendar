@@ -18,7 +18,7 @@
 ```javascript
 import 'vue-event-calendar-ext/dist/index.css' //1.1.10之后的版本，css被放在了单独的文件中，方便替换
 import vueEventCalendarExt from 'vue-event-calendar-ext'
-Vue.use(vueEventCalendar, {locale: 'zh'}) //可以设置语言，支持中文和英文
+Vue.use(vueEventCalendarExt, {locale: 'zh'}) //可以设置语言，支持中文和英文
 ```
 
 #### 用法示例
