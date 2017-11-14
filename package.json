@@ -1,7 +1,7 @@
 {
   "name": "vue-event-calendar-ext",
   "description": "基于vue-event-calendar 改造",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "chengxinjing <tkggusraqk@live.com>",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
