@@ -305,8 +305,8 @@
                             background-color: @base-orange;
                             border-radius: 50%;
                             /*opacity: .8;*/
-                            width: 0.5em;
-                            height: 0.5em;
+                            width: 0.3em;
+                            height: 0.3em;
                             position: absolute;
                             left: 50%;
                             top: 50%;

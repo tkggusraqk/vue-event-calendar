@@ -1,7 +1,7 @@
 # vue-event-calendar-ext
 
 > vue-event-calendar-ext是基于vue-event-calendar定制改造的一个版本。
-> [在线例子](https://tkggusraqk.github.io/vue-event-calendar/)
+> [在线例子](https://tkggusraqk.github.io/vue-event-calendar-ext-demo/index.html)
 
 ## 依赖
 - vue: ^2.0.0
